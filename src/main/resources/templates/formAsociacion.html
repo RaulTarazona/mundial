@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Asociacion</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header"><h2>Asociacion</h2></div>
+  <div class="form-card">
+    <form th:action="@{/asociaciones/guardar}" th:object="${asociacion}" method="post">
+      <input type="hidden" th:field="*{id}"/>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" th:field="*{nombre}" placeholder="Ej: FIFA"/>
+      </div>
+      <div class="form-group">
+        <label>País</label>
+        <input type="text" th:field="*{pais}" placeholder="Ej: Suiza"/>
+      </div>
+      <div class="form-group">
+        <label>Presidente</label>
+        <input type="text" th:field="*{presidente}" placeholder="Nombre del presidente"/>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/asociaciones}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+  <a th:href="@{/asociaciones}" class="back-link">&#8592; Volver</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Clubes</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <h2>Clubes</h2>
+    <a th:href="@{/clubes/nuevo}" class="btn btn-primary">+ Nuevo</a>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Nombre</th><th>Ubicación</th><th>Estadio</th><th>Fundación</th><th>Asociación</th><th>Entrenador</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(clubes)}">
+          <td colspan="7" class="empty">No hay clubes registrados.</td>
+        </tr>
+        <tr th:each="c : ${clubes}">
+          <td th:text="${c.nombre}"></td>
+          <td th:text="${c.ubicacion}"></td>
+          <td th:text="${c.estadio}"></td>
+          <td th:text="${c.anioFundacion}"></td>
+          <td th:text="${c.asociacion != null ? c.asociacion.nombre : '-'}"></td>
+          <td th:text="${c.entrenador != null ? c.entrenador.nombre : '-'}"></td>
+          <td><div class="actions">
+            <a th:href="@{/clubes/editar/{id}(id=${c.id})}" class="btn btn-secondary btn-sm">Editar</a>
+            <a th:href="@{/clubes/eliminar/{id}(id=${c.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a th:href="@{/}" class="back-link">&#8592; Volver al inicio</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

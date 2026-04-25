@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Mundial 2026</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+ 
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+ 
+<div class="hero">
+  <h1>Copa Mundial 2026</h1>
+  <p>Gestiona clubes, jugadores, entrenadores y competiciones del torneo más grande del mundo.</p>
+  <a th:href="@{/clubes}" class="btn btn-primary">Explorar Ahora</a>
+</div>
+ 
+<div class="cards-grid">
+  <a th:href="@{/clubes}" class="card-link">
+    <span class="card-icon">&#127942;</span>
+    <span class="card-title">Clubes</span>
+    <span class="card-sub">Gestionar equipos</span>
+  </a>
+  <a th:href="@{/asociaciones}" class="card-link">
+    <span class="card-icon">&#127758;</span>
+    <span class="card-title">Asociaciones</span>
+    <span class="card-sub">Federaciones</span>
+  </a>
+  <a th:href="@{/entrenadores}" class="card-link">
+    <span class="card-icon">&#128203;</span>
+    <span class="card-title">Entrenadores</span>
+    <span class="card-sub">Cuerpo técnico</span>
+  </a>
+  <a th:href="@{/jugadores}" class="card-link">
+    <span class="card-icon">&#9965;</span>
+    <span class="card-title">Jugadores</span>
+    <span class="card-sub">Plantillas</span>
+  </a>
+  <a th:href="@{/competiciones}" class="card-link">
+    <span class="card-icon">&#127941;</span>
+    <span class="card-title">Competiciones</span>
+    <span class="card-sub">Torneos</span>
+  </a>
+</div>
+ 
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

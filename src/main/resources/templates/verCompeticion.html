@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Competiciones</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <h2>Competiciones</h2>
+    <a th:href="@{/competiciones/nueva}" class="btn btn-primary">+ Nueva</a>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Nombre</th><th>Premio</th><th>Fecha Inicio</th><th>Fecha Fin</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(competiciones)}">
+          <td colspan="5" class="empty">No hay competiciones registradas.</td>
+        </tr>
+        <tr th:each="c : ${competiciones}">
+          <td th:text="${c.nombre}"></td>
+          <td th:text="${c.montoPremio}"></td>
+          <td th:text="${c.fechaInicio}"></td>
+          <td th:text="${c.fechaFin}"></td>
+          <td><div class="actions">
+            <a th:href="@{/competiciones/editar/{id}(id=${c.id})}" class="btn btn-secondary btn-sm">Editar</a>
+            <a th:href="@{/competiciones/eliminar/{id}(id=${c.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a th:href="@{/}" class="back-link">&#8592; Volver al inicio</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

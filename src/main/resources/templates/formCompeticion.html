@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Formulario Competicion</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header"><h2>Competicion</h2></div>
+  <div class="form-card">
+    <form th:action="@{/competiciones/guardar}" th:object="${competicion}" method="post">
+      <input type="hidden" th:field="*{id}"/>
+      <div class="form-group"><label>Nombre</label><input type="text" th:field="*{nombre}" placeholder="Ej: Copa Mundial"/></div>
+      <div class="form-group"><label>Monto Premio</label><input type="number" th:field="*{montoPremio}" placeholder="Ej: 1000000"/></div>
+      <div class="form-group"><label>Fecha Inicio</label><input type="date" th:field="*{fechaInicio}"/></div>
+      <div class="form-group"><label>Fecha Fin</label><input type="date" th:field="*{fechaFin}"/></div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/competiciones}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+  <a th:href="@{/competiciones}" class="back-link">&#8592; Volver</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

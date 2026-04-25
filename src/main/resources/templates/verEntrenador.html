@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Entrenadores</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header">
+    <h2>Entrenadores</h2>
+    <a th:href="@{/entrenadores/nuevo}" class="btn btn-primary">+ Nuevo</a>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Nacionalidad</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(entrenadores)}">
+          <td colspan="5" class="empty">No hay entrenadores registrados.</td>
+        </tr>
+        <tr th:each="e : ${entrenadores}">
+          <td th:text="${e.nombre}"></td>
+          <td th:text="${e.apellido}"></td>
+          <td th:text="${e.edad}"></td>
+          <td th:text="${e.nacionalidad}"></td>
+          <td><div class="actions">
+            <a th:href="@{/entrenadores/editar/{id}(id=${e.id})}" class="btn btn-secondary btn-sm">Editar</a>
+            <a th:href="@{/entrenadores/eliminar/{id}(id=${e.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a th:href="@{/}" class="back-link">&#8592; Volver al inicio</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>

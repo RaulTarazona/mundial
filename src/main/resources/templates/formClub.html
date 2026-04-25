@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Formulario Club</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header"><h2>Club</h2></div>
+  <div class="form-card">
+    <form th:action="@{/clubes/guardar}" th:object="${club}" method="post">
+      <input type="hidden" th:field="*{id}"/>
+      <div class="form-group"><label>Nombre</label><input type="text" th:field="*{nombre}" placeholder="Nombre del club"/></div>
+      <div class="form-group"><label>Ubicación</label><input type="text" th:field="*{ubicacion}" placeholder="Ciudad, País"/></div>
+      <div class="form-group"><label>Estadio</label><input type="text" th:field="*{estadio}" placeholder="Nombre del estadio"/></div>
+      <div class="form-group"><label>Año de Fundación</label><input type="number" th:field="*{anioFundacion}" placeholder="Ej: 1900"/></div>
+      <div class="form-group"><label>Número de Jugadores</label><input type="number" th:field="*{numeroJugadores}" placeholder="Ej: 25"/></div>
+      <div class="form-group">
+        <label>Asociación</label>
+        <select th:field="*{asociacion}">
+          <option value="">-- Seleccione --</option>
+          <option th:each="a : ${asociaciones}" th:value="${a.id}" th:text="${a.nombre}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Entrenador</label>
+        <select th:field="*{entrenador}">
+          <option value="">-- Seleccione --</option>
+          <option th:each="e : ${entrenadores}" th:value="${e.id}" th:text="${e.nombre + ' ' + e.apellido}"></option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/clubes}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+  <a th:href="@{/clubes}" class="back-link">&#8592; Volver</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
+</body>
+</html>
