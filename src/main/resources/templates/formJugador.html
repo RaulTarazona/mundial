@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario Jugador</title>
+  <meta charset="UTF-8"><title>Formulario Jugador</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Formulario Jugador</h1>
+<nav>
+  <a class="nav-brand" th:href="@{/}">&#9917; Mundial</a>
+  <ul class="nav-links">
+    <li><a th:href="@{/clubes}">Clubes</a></li>
+    <li><a th:href="@{/asociaciones}">Asociaciones</a></li>
+    <li><a th:href="@{/entrenadores}">Entrenadores</a></li>
+    <li><a th:href="@{/jugadores}">Jugadores</a></li>
+    <li><a th:href="@{/competiciones}">Competiciones</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="page-header"><h2>Jugador</h2></div>
+  <div class="form-card">
     <form th:action="@{/jugadores/guardar}" th:object="${jugador}" method="post">
-        <input type="hidden" th:field="*{id}"/>
-        <label>Nombre: <input type="text" th:field="*{nombre}"/></label><br>
-        <label>Apellido: <input type="text" th:field="*{apellido}"/></label><br>
-        <label>Numero: <input type="number" th:field="*{numero}"/></label><br>
-        <label>Posicion: <input type="text" th:field="*{posicion}"/></label><br>
-        <button type="submit">Guardar</button>
+      <input type="hidden" th:field="*{id}"/>
+      <div class="form-group"><label>Nombre</label><input type="text" th:field="*{nombre}" placeholder="Nombre"/></div>
+      <div class="form-group"><label>Apellido</label><input type="text" th:field="*{apellido}" placeholder="Apellido"/></div>
+      <div class="form-group"><label>Número</label><input type="number" th:field="*{numero}" placeholder="Ej: 10"/></div>
+      <div class="form-group"><label>Posición</label><input type="text" th:field="*{posicion}" placeholder="Ej: Delantero"/></div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/jugadores}" class="btn btn-secondary">Cancelar</a>
+      </div>
     </form>
-    <a th:href="@{/jugadores}">Volver</a>
+  </div>
+  <a th:href="@{/jugadores}" class="back-link">&#8592; Volver</a>
+</div>
+<footer>Mundial 2026 &mdash; Sistema de Gestión</footer>
 </body>
 </html>
